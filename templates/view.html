@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<h1>View Students</h1>
+
+<table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Surname</th>
+        <th scope="col">Email</th>
+        <th scope="col">Age</th>
+        <th scope="col">Read</th>
+        <th scope="col">Update</th>
+        <th scope="col">Update(using Class)</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Delete(using Class)</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% if students %}
+            {% for student in students %}
+                <tr>
+                    <th scope="row">{{ student.id }}</th>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.email }}</td>
+                    <td>{{ student.age }}</td>
+                    <td><a href = "{% url 'view_class' student.pk %}" class ='btn btn-info btn-sm'>Read</a></td>
+                    <td><a href = "{% url 'update_func' student.pk %}" class ='btn btn-warning btn-sm'>Update</a></td>
+                    <td><a href = "{% url 'update' student.pk %}" class ='btn btn-warning btn-sm'>Update</a></td>
+                    <td><a href = "{% url 'delete_fnc' student.pk %}" class ='btn btn-danger btn-sm'>Delete</a></td>
+                    <td><a href = "{% url 'delete_class' student.pk %}" class ='btn btn-danger btn-sm'>Delete</a></td>
+                </tr>
+            {% endfor %}
+        {% else %}
+        <tr>
+            <td>NO DATA Available!</td>
+        </tr>
+        {% endif %}
+    </tbody>
+  </table>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<h1>Read Student</h1>
+<form method = 'POST'>
+    {{ form }}
+    {% csrf_token %}
+    <br>
+</form>
+
+{% endblock %}
